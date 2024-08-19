@@ -1,18 +1,38 @@
-version: 0.2
+# Basic application configuration
+app:
+  name: MyApp
+  version: 1.0.0
+  environment: development
 
-phases:
-  install:
-    runtime-versions:
-      nodejs: 12
-  build:
-    commands:
-      - echo "Build started on `date`"
-      - npm install
-      - npm run build
-  post_build:
-    commands:
-      - echo "Build completed on `date`"
+# Database settings
+database:
+  host: localhost
+  port: 5432
+  name: myapp_db
+  user: db_user
+  password: secret_password
 
-artifacts:
-  files:
-    - '**/*'
+# List of services
+services:
+  - name: web
+    port: 8080
+    enabled: true
+
+  - name: api
+    port: 8081
+    enabled: false
+
+  - name: worker
+    port: 8082
+    enabled: true
+
+# Logging configuration
+logging:
+  level: info
+  file: /var/log/myapp.log
+
+# Features toggle
+features:
+  auth: true
+  payments: false
+  analytics: true
