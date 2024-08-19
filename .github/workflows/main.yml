@@ -1,0 +1,19 @@
+# .github/workflows/test-pat.yml
+name: Test PAT
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  test-pat:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Test GitHub API with PAT
+      run: |
+        curl -H "Authorization: token ${{ secrets.makeup_TOKEN }}" https://api.github.com/user/repos
