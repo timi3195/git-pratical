@@ -1,19 +1,23 @@
-# .github/workflows/test-pat.yml
-name: Test PAT
+# .github/workflows/deploy.yml
+name: Deploy
 
-on: 
+on:
   push:
     branches:
       - main
 
 jobs:
-  test-pat:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - name: Test GitHub API with PAT
+    - name: Set up environment
       run: |
-        curl -H "Authorization: token ${{ secrets.makeup_TOKEN }}" https://api.github.com/user/repos
+        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> $GITHUB_ENV
+
+    - name: Print environment variables
+      run: |
+        cat $GITHUB_ENV
