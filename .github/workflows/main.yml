@@ -21,5 +21,10 @@ jobs:
     - name: Test GitHub API with PAT
       run: |
         curl -H "Authorization: token ${{ secrets.MAKEUP_TOKEN }}" https://api.github.com/user/repos
+         - name: Use Environment Secret
+         
+    - name: Use Environment Secret
+      run: |
+        echo "Using environment secret: ${{ secrets.NEW_ENV_SECRET }}"
 
 
