@@ -26,6 +26,6 @@ jobs:
 
     - name: Use Environment Secret
       run: |
-        echo "Using environment secret: ${{ secrets.API_TOKEN }}"
+        echo "Using environment secret: ${{ secrets.ST_PASSWORD }}"
 
 
