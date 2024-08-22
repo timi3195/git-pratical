@@ -1,6 +1,4 @@
-
 name: Test PAT
-
 
 on:
   push:
@@ -8,24 +6,19 @@ on:
       - main
 
 jobs:
-
   test-pat:
-
     runs-on: ubuntu-latest
+    environment: staging  # Ensure this matches the environment name in GitHub
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-
     - name: Test GitHub API with PAT
       run: |
         curl -H "Authorization: token ${{ secrets.MAKEUP_TOKEN }}" https://api.github.com/user/repos
-         - name: Use Environment Secret
-
 
     - name: Use Environment Secret
       run: |
         echo "Using environment secret: ${{ secrets.ST_PASSWORD }}"
-
-
+        echo "The secret has been successfully accessed"
